@@ -19,7 +19,7 @@ public class TalentLmsLeftMenu extends BaseWebTest  {
     @Test
     @DisplayName("Переход к 'Reports → Learning activities' через универсальный метод")
     void shouldNavigateToSubMenuByTextNames() {
-        AdminDashboardPage dashboard = openTalentLMSLoginPage("/plus/dashboard", AdminDashboardPage.class);
+        AdminDashboardPage dashboard = openTalentLMSLoginPage("", AdminDashboardPage.class);
         dashboard.waitForPageLoaded();
 
         LeftMenuComponent leftMenu = dashboard.getLeftMenu();

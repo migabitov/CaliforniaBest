@@ -34,14 +34,9 @@ public class BaseWebTest extends BaseTest {
 
     @Step("Open the {1}")
     public <T> T openTalentLMSLoginPage(String endPoint, Class<T> clazz) {
-        LoginPage loginPage = Selenide.open(BASE_LMS_URL, LoginPage.class);
+        LoginPage loginPage = Selenide.open(BASE_LMS_URL + endPoint, LoginPage.class); // сразу открой нужную страницу
         loginPage.doLogin(getCredentialConfig().username(), getCredentialConfig().password());
-        loginPage.waitForPageLoaded();
-
-        // Переход по эндпоинту через JS или Selenide.navigate
-        Selenide.open(BASE_LMS_URL + endPoint); // НЕ открываем с классом, иначе создается новый driver
-
-        return Selenide.page(clazz); // Создаём page объект без перезагрузки driver'а
+        return Selenide.page(clazz);
     }
 
 
